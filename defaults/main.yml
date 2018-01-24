@@ -11,6 +11,9 @@ mariadb_repo_key_url: 'keyserver.ubuntu.com'
 mariadb_package_client: mariadb-client
 mariadb_package_server: mariadb-server
 
+# hooker
+#mariadb_after_tasks_file: "something"
+
 # MariaDB service
 mariadb_manage_service: True
 mariadb_service_name: mysql
@@ -24,6 +27,7 @@ mariadb_root_username: root
 mariadb_root_password: root
 mariadb_debsysmaint_password:
 mariadb_client_port: 3306
+mariadb_server_port: 3306
 mariadb_uid:
 mariadb_gid:
 
@@ -48,7 +52,7 @@ mariadb_default_config:
       - user = mysql
       - pid_file = /var/run/mysqld/mysqld.pid
       - socket = /var/run/mysqld/mysqld.sock
-      - port = 3306
+      - port = {{mariadb_server_port}}
       - basedir = /usr
       - datadir = "{{mariadb_datadir}}"
       - tmpdir = /tmp

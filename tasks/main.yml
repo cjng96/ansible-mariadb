@@ -8,3 +8,5 @@
   tags: [mariadb]
 - import_tasks: users.yml
   tags: [mariadb]
+- import_tasks: "{{ mariadb_after_tasks_file | default('empty.yml') }}"
+  

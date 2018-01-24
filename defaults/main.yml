@@ -12,7 +12,12 @@ mariadb_package_client: mariadb-client
 mariadb_package_server: mariadb-server
 
 # hooker
-#mariadb_after_tasks_file: "something"
+mariadb_after_tasks_file:
+
+#
+mariadb_use_supervisor: False
+mariadb_bind_address: '127.0.0.1'
+mariadb_allow_external: False
 
 # MariaDB service
 mariadb_manage_service: True
@@ -57,7 +62,7 @@ mariadb_default_config:
       - datadir = "{{mariadb_datadir}}"
       - tmpdir = /tmp
       - skip_external_locking = True
-      - bind_address = 127.0.0.1
+      - bind_address = {{mariadb_bind_address}}
       - key_buffer = 16M
       - max_allowed_packet = 16M
       - thread_stack = 192K

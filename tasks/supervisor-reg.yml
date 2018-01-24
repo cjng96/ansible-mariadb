@@ -1,0 +1,14 @@
+
+- name: Stop mariaDB for supervisor
+  service: name={{mariadb_service_name}} state=stopped
+
+- name: Register supervisor conf
+  copy: 
+    src: "mariadb.conf"
+    dest: "/etc/supervisor/conf.d/"
+
+- name: Start mariadb by supervisor
+  command: "{{item}}"
+  with_items:
+    - "sv reread"
+    - "sv add mariadb"
